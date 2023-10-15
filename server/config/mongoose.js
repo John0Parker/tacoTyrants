@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Need to add schema name
-mongoose.connect("mongodb://127.0.0.1/<Schema_Name>", {
+mongoose.connect("mongodb://127.0.0.1/taco_tyrants_schema", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

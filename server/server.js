@@ -18,7 +18,7 @@ app.use(
     require('./config/mongoose');
 
     // import routes
-
+    require('./routes/foodItemRoutes')(app);
 
 
     app.listen(8000, () => console.log('listening on port 8000'));
