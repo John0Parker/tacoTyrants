@@ -6,7 +6,7 @@ const AllMenuItems =(props)=>{
         <>
         <Header/>
         <div className="container-fluid">
-            <h1 className="mx-3 my-2"><Link to='/TacoTyrant' style={{textDecoration: 'none'}}>About Us</Link></h1>
+            <h1 className="mx-3 my-2"><Link to='/TacoTyrant' style={{textDecoration: 'none'}}>All Items</Link></h1>
 
         </div>
         </>

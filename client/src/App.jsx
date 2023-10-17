@@ -14,7 +14,7 @@ function App() {
       {/* Include your views file as a component in the array of elements */}
         <Routes>
           
-          <Route path='/*' element={[<Home/>, <MenuView/>,]}/>
+          <Route path='/*' element={[<Home/>, <MenuView/>]}/>
           {/* <Route path='/menu' element={<MenuView/>}/> */}
 
            {/*  EXAMPLE ROUTE PLACEHOLDER <Route element={<HomepageDisplay/>} path="/TacoTyrant" /> */}
