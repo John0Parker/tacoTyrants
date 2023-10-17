@@ -21,7 +21,7 @@ app.use(
     require('./routes/foodItemRoutes')(app);
     require('./routes/locationRoutes')(app);
     require("./routes/ReviewRoutes")(app);
-    
+    require("./routes/orderRoutes")(app);
 
     app.listen(8000, () => console.log('listening on port 8000'));
 
