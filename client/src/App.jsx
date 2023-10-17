@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
-
+import Hub from './views/Hub';
 import './App.css'
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-           {/*  EXAMPLE ROUTE PLACEHOLDER <Route element={<HomepageDisplay/>} path="/TacoTyrant" /> */}
+        <Route path="/TacoTyrant/*" element={<Hub/>}/>
         </Routes>
       </BrowserRouter>
     </>
