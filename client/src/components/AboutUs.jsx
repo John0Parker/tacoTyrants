@@ -9,7 +9,7 @@ const AboutUs =(props)=>{
         <Header/>
         <div className="container-fluid">
             <h1 className="mx-3 my-2"><Link to='/TacoTyrant' style={{textDecoration: 'none'}}>About Us</Link></h1>
-
+                <h2>test</h2>
         </div>
         </>
     )//end return
