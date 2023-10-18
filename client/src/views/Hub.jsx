@@ -1,7 +1,7 @@
 import {Routes, Route, Link} from "react-router-dom";
 import Header from "../components/Header"
 import Orders from "../components/Orders"
-import ContactUs from "../components/ContactUs";
+import ContactUs from "../components/general/ContactUs";
 
 const Hub = (props) => {
     return(
