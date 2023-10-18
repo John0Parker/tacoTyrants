@@ -6,9 +6,11 @@ import ContactUs from "../components/general/ContactUs";
 const Hub = (props) => {
     return(
         <>
-        {<Header/>}
+        {/* commented out header below because it was causing an additional  */}
+        {/* {<Header/>} */}
         <Routes>
-            <Route path="/" element={<ContactUs/>}/>
+            {/* commented out root route. See Views/Home for general routing (home) */}
+            {/* <Route path="/" element={<ContactUs/>}/> */}
             <Route path="/orders" element= {<Orders/>}/>
 {/*             <Route path="/*" element="This page is inaccessible by normal means"/> */}
         </Routes>

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Route, Routes, Navigate} from 'react-router-dom';
-import Header from '../components/Header';
 import AboutUs from '../components/general/AboutUs';
 
 
@@ -12,7 +11,7 @@ const Home = (props) => {
         <Routes>
             {/* Set a redirect to automatically send user to /tacotyrants
             if they enter an invalid url*/}
-            <Route path='/' element={<Header/>} />
+            <Route path='/' element />
             <Route path='/about' element={<AboutUs/>} />
         </Routes>
     )

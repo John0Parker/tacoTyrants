@@ -5,7 +5,7 @@ const ContactUs = (props) => {
         <div>
             Filler
         </div>
-    );
+    )
 }
 
 export default ContactUs;

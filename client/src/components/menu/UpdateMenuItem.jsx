@@ -62,7 +62,6 @@ const UpdateMenuItem =({allFoodItems, setAllFoodItems})=>{
 
     return(
         <>
-        <Header/>
         <div className="container-fluid">
             <h2>Edit {itemTitle}</h2>
             <form onSubmit={updatedMenuItemHandler}>
