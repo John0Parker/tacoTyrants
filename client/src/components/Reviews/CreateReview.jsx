@@ -33,7 +33,7 @@ const CreateReview =(props)=>{
 
     return(
         <div>
-            <form onSubmit={formHandler} className=" container card w-50 px-0">
+            <form onSubmit={formHandler} className=" container card py-0 w-50 px-0">
                 <h3 className="card-header">Post a Review</h3>
                 <div className="card-body">
                     <div style={{color:"red"}}>
