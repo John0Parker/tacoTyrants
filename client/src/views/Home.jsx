@@ -12,7 +12,7 @@ const Home = (props) => {
             {/* Set a redirect to automatically send user to /tacotyrants
             if they enter an invalid url*/}
             <Route path='/' element />
-            <Route path='/about' element={<AboutUs/>} />
+            <Route path='/AboutUs' element={<AboutUs/>} />
         </Routes>
     )
 
