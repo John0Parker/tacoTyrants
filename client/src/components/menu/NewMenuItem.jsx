@@ -46,7 +46,6 @@ const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
 
     return(
         <>
-        <Header/>
         <div className="container-fluid">
             <h2>Add A New Menu Item</h2>
 
