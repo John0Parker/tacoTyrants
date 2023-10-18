@@ -10,7 +10,7 @@ const Hub = (props) => {
         <Routes>
             <Route path="/" element={<ContactUs/>}/>
             <Route path="/orders" element= {<Orders/>}/>
-            <Route path="/*" element="This page is inaccessible by normal means"/>
+{/*             <Route path="/*" element="This page is inaccessible by normal means"/> */}
         </Routes>
         </>
     );
