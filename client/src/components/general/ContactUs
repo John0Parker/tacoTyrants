@@ -1,0 +1,11 @@
+import React from 'react';
+
+const ContactUs = (props) => {
+    return(
+        <div>
+          welcome to contact us page, im not yet completed!
+        </div>
+    );
+}
+
+export default ContactUs;
