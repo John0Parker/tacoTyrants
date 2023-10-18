@@ -16,10 +16,8 @@ function App() {
       <BrowserRouter basename='/tacotyrants'>
       {/* Include your views file as a component in the array of elements */}
         <Routes>
-
 {/*           <Route path="/HomePage/*" element={<Hub/>,<ReviewsDisplay/>}/>  commented out since other option works better, change if needed*/}
-          <Route path='/*' element={[<Home/>, <MenuView/>, <Hub/>,<ReviewsDisplay/></Route> ]}/>
-
+          <Route path='/*' element={[<Home/>, <MenuView/>, <Hub/>, <ReviewsDisplay/> ]}/>
         </Routes>
       </BrowserRouter>
     </>

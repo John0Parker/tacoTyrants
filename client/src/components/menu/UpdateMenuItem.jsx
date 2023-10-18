@@ -3,9 +3,10 @@ import {Link, useNavigate, useParams} from 'react-router-dom';
 import Header from '../Header';
 import axios from 'axios';
 
-const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
+const UpdateMenuItem =({allFoodItems, setAllFoodItems})=>{
     const {id} = useParams();
     const navigate = useNavigate();
+
     // Getters and Setters
     const [itemTitle,setItemTitle] = useState("")
     const [itemDesc,setItemDesc] = useState("")
@@ -16,9 +17,24 @@ const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
 
     const [errors, setErrors] = useState([]);
 
-    const newMenuItemHandler = e =>{
+    // axios call to get one FoodItem by ID
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/fooditems/${id}`)
+            .then(res => {
+                setItemTitle(res.data.itemTitle);
+                setItemDesc(res.data.itemDesc);
+                setItemNum(res.data.itemNum);
+                setIsDineInOnly(res.data.isDineInOnly);
+                setItemPrice(res.data.itemPrice);
+                setItemImage(res.data.itemImage);
+            })
+            .catch(err => console.log(err))
+    }, [])
+
+    // Event handler to update all aspects of menu item when form is submitted
+    const updatedMenuItemHandler = e =>{
         e.preventDefault();
-        const newMenuItem={
+        const updatedMenuItem={
             itemTitle,
             itemDesc,
             itemNum,
@@ -27,12 +43,12 @@ const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
             itemImage
         }
         
-        // axios call to create new menu item
-        axios.post('http://localhost:8000/api/fooditems', newMenuItem)
+        // axios call to update menu item
+        axios.put(`http://localhost:8000/api/fooditems/${id}`, updatedMenuItem)
             .then(res =>{
                 setAllFoodItems([...allFoodItems, res.data]);
                 console.log(res.data._id);
-                navigate(`/menu`)
+                navigate(`/menu/${id}`)
             })
             .catch( err => {
                 console.log(err.response.data);
@@ -48,9 +64,8 @@ const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
         <>
         <Header/>
         <div className="container-fluid">
-            <h2>Add A New Menu Item</h2>
-
-            <form onSubmit={newMenuItemHandler}>
+            <h2>Edit {itemTitle}</h2>
+            <form onSubmit={updatedMenuItemHandler}>
                 <div style= {{color: "red"}}>
                     {
                         errors.map( (err, idx) =>{
@@ -90,4 +105,4 @@ const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
         </>
     )
 }
-export default NewMenuItem;
+export default UpdateMenuItem;

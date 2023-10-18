@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Route, Routes, Navigate} from 'react-router-dom';
 import Header from '../components/Header';
-import AboutUs from '../components/AboutUs';
+import AboutUs from '../components/general/AboutUs';
 
 
 const Home = (props) => {
