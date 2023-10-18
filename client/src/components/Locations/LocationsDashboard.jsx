@@ -35,21 +35,21 @@ const LocationsDashboard = ({allTacoLocations, setAllTacoLocations}) => {
                         allTacoLocations.map( (store, index) => {
                             return(
                                 <tr key={index}>
-                                    <td><Link className='btn bg-warning' to={'/locations/view/' + store._id}>{store.storeNumber}</Link></td>
+                                    <td><Link className='btn btn-outline-primary text-primary-emphasis' to={'/locations/view/' + store._id}>{store.storeNumber}</Link></td>
                                     <td>{store.address}</td>
                                     <td>{store.hours}</td>
                                     <td>{store.phoneNumber}</td>
                                     <td>{store.createdAt}</td>
-                                    <td><Link className='btn bg-success text-light' style={{textDecoration: 'none'}} to={'/locations/update/' + store._id}>Edit</Link> | <button className='btn bg-danger' onClick={deleteHandler} id={store._id}>Delete</button></td>
+                                    <td><Link className='btn btn-outline-success text-success-emphasis' style={{textDecoration: 'none'}} to={'/locations/update/' + store._id}>Edit</Link> | <button className='btn btn-outline-danger text-danger-emphasis' onClick={deleteHandler} id={store._id}>Delete</button></td>
                                 </tr>
                             )
                         })
                     }
                 </tbody>
             </table>
-            <div className='d-flex justify-content-evenly'>
-                <Link className='btn bg-secondary text-light' style={{textDecoration: 'none'}} to={'/locations/create'}>Create New Location</Link>
-                <Link className='btn bg-secondary text-light' style={{textDecoration: 'none'}} to={'/locations/showalldisplay'}>List Display</Link>
+            <div className='d-flex justify-content-center'>
+                <Link className='btn bg-secondary text-light mx-5' style={{textDecoration: 'none'}} to={'/locations/create'}>Create New Location</Link>
+                <Link className='btn bg-secondary text-light mx-5' style={{textDecoration: 'none'}} to={'/locations/showalldisplay'}>List Display</Link>
             </div>
         </div>
     );

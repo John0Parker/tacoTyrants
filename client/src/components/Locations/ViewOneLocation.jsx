@@ -21,7 +21,7 @@ const ViewOneLocation = (props) => {
 
     return(
         <div className='container'>
-            <div className='card mb-3 bg-warning'>
+            <div className='card mb-3'>
                 <div className='row g-0 p-5'>
                     <div className='col-md-4'>
                         <img src={thisLocation.locationImage} className='img-fluid rounded-start' style={{maxWidth: "400px"}} alt="a photo of this Taco Tyrant Shop" />
@@ -31,9 +31,9 @@ const ViewOneLocation = (props) => {
                             <h3 class="card-title">Address: {thisLocation.address}</h3>
                             <p class="card-text">Phone Number: {thisLocation.phoneNumber}</p>
                             <p class="card-text">Hours: {thisLocation.hours}</p>
-                            <p class="card-text">Report Issue: <Link className='btn bg-danger text-dark' to={'/'}>Report Form</Link></p>
-                            <Link className='btn bg-success text-light' to={'/update/' + thisLocation._id}>Edit</Link>
-                            <Link className='btn bg-success text-light ms-3' style={{textDecoration: 'none'}} to={'/locations/showalldisplay'}>List Display</Link>
+                            <p class="card-text">Leave a Review: <Link className='btn btn-outline-warning text-warning-emphasis' to={'/review/create'}>Review Form</Link></p>
+                            <Link className='btn btn-outline-success text-success-emphasis mx-3' style={{textDecoration: 'none'}} to={'/locations/showalldisplay'}>List Display</Link>
+                            <Link className='btn btn-outline-success text-success-emphasis' to={'/locations/update/' + thisLocation._id}>Edit</Link>
                         </div>
                     </div>
                 </div>

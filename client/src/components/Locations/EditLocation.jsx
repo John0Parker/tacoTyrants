@@ -10,6 +10,7 @@ const EditLocation = (props) => {
     const [ phoneNumber, setPhoneNumber ] = useState('');
     const [ storeNumber, setStoreNumber ] = useState('');
     const [ locationImage, setLocationImage ] = useState('');
+    const [ locationErrors, setLocationErrors ] = useState([]);
     const navigate = useNavigate();
 
     useEffect( () => {
@@ -38,12 +39,29 @@ const EditLocation = (props) => {
                 console.log(res);
                 navigate('/locations/view/' + id);
             })
+            .catch( err => {
+                console.log(err);
+                const errArray = [];
+                for(const key of Object.keys(err.response.data.errors)) {
+                    errArray.push(err.response.data.errors[key].message)
+                }
+                setLocationErrors(errArray);
+            })
     }
 
     return(
-        <div className='container'>
-            <h1>Edit your location</h1>
-            <form onSubmit={editLocationHandler}>
+        <div className='container card'>
+            <form className='card-body' onSubmit={editLocationHandler}>
+                <h1 className='card-title'>Edit your location</h1>
+                <div style={{ color: "red" }}>
+                    {
+                        locationErrors.map( (err, idx) => {
+                            return(
+                                <p key={idx}>{err}</p>
+                            )
+                        })
+                    }
+                </div>
                 <div>
                     <label className='form-label'>Address</label>
                     <input className='form-control' value={address} onChange={ e => setAddress(e.target.value) }/>
@@ -64,7 +82,9 @@ const EditLocation = (props) => {
                     <label className='form-label'>Image Link</label>
                     <input className='form-control' type='text' value={locationImage} onChange={ e => setLocationImage(e.target.value) }/>
                 </div>
-                <button className='btn bg-primary text-light'>Update Location</button>
+                <div className='d-flex justify-content-center mt-5'>
+                    <button className='btn bg-primary text-light'>Update Location</button>
+                </div>
             </form>
         </div>
     );
