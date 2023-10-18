@@ -1,5 +1,32 @@
 const mongoose = require('mongoose');
 
+const ToppingsSchema = mongoose.Schema({
+    top1: {
+        type: Boolean, 
+        required: true
+    },
+    top2: {
+        type: Boolean, 
+        required: true
+    },
+    top3: {
+        type: Boolean, 
+        required: true
+    },
+    top4: {
+        type: Boolean, 
+        required: true
+    },
+    top5: {
+        type: Boolean, 
+        required: true
+    },
+    top6: {
+        type: Boolean, 
+        required: true
+    }
+}, {timestamps: true})
+
 const OrderSchema = new mongoose.Schema({
     customerName: {
         type: String,
@@ -19,20 +46,13 @@ const OrderSchema = new mongoose.Schema({
     quantity: {
         type: Number,
         required: true,
-        minLength: [1]
-    },
-    includeTopping: {
-        top1: { type: Boolean, required: true, default: false },
-        top2: { type: Boolean, required: true, default: false },
-        top3: { type: Boolean, required: true, default: false },
-        top4: { type: Boolean, required: true, default: false },
-        top5: { type: Boolean, required: true, default: false },
-        top6: { type: Boolean, required: true, default: false }
+        min: [1, "Must be at least 1"]
     },
     notes: {
         type: String,
-        required: false
-    }
+    },
+    toppings: ToppingsSchema,
+
 }, {timestamps: true})
 
 module.exports = mongoose.model("Order", OrderSchema);

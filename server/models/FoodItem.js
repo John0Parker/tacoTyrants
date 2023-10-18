@@ -14,6 +14,7 @@ const FoodItemSchema = new mongoose.Schema({
     itemNum:{
         type: Number,
         required: [true, "Please provide a number for this food item."],
+        min: [1, "Item Number must be greater than 0"]
 
     },
     isDineInOnly:{

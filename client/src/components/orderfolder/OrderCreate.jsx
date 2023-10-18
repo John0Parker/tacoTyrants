@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const OrderCreate = (props) => {
-    const [open, setOpen] = useState();
     const [customerName, setCustomerName] = useState("");
     const [shell, setShell] = useState("Hard Flour");
     const [quantity, setQuantity] = useState(1);

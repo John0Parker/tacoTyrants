@@ -44,7 +44,7 @@ const UpdateReviewFrom=(props)=>{
         <div>
             <div>
 
-                <form onSubmit={formHandler} className="  container card px-0 w-50">
+                <form onSubmit={formHandler} className="  container card py-0 px-0 w-50">
                     <h3 className="card-header">Update Review</h3>
                     <div className="card-body">
                         <div className="form-group">

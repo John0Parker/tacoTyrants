@@ -33,10 +33,10 @@ const Orders = (props) => {
                 <thead>
                     <tr>
                         <th>Pickup Name</th>
-                        <th>Taco something</th>
-                        <th>Order Submission Time</th>
+                        <th>Taco Shell</th>
+                        <th>Meat</th>
                         <th>Quantity</th>
-                        <th>Toppings</th>
+                        <th>Toppings?</th>
                         <th>Notes</th>
                         <th>Delete</th>
                     </tr>
@@ -48,14 +48,13 @@ const Orders = (props) => {
                                 <td><Link to={`${order._id}`}>{order.customerName}</Link></td>
                                 <td>{order.shell}</td>
                                 <td>{order.meat}</td>
-                                <td>{order.quantity}</td>
-                                <td>{order.number}</td>
-{/*                                 <td>{order.toppings.top1 == true ? 'Corn' : null}</td>
-                                <td>{order.toppings.top2 == true ? 'Pico de Gallo' : null}</td>
-                                <td>{order.toppings.top3 == true ? 'Jalapenos' : null}</td>
-                                <td>{order.toppings.top4 == true ? 'Red' : null}</td>
-                                <td>{order.toppings.top5 == true ? 'Green' : null}</td>
-                                <td>{order.toppings.top6 == true ? 'Habanero' : null}</td>*/}
+                                <td>{order.quantity}</td> 
+                                <td>{order.toppings.top1 == true ? 'Corn/' : null}
+                                {order.toppings.top2 == true ? 'Pico de Gallo/' : null}
+                                {order.toppings.top3 == true ? 'Jalapenos/' : null}
+                                {order.toppings.top4 == true ? 'Red/' : null}
+                                {order.toppings.top5 == true ? 'Green/' : null}
+                                {order.toppings.top6 == true ? 'Habanero/' : null}  </td>        
                                 <td>{order.notes != undefined ? order.notes : 'N/A'}</td>
                                 <td>{<button onClick={()=> deleteFilter(order._id)}>Delete</button>}</td>
                             </tr>
