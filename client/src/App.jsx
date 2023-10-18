@@ -5,6 +5,7 @@ import MenuView from './views/MenuView';
 import Hub from './views/Hub';
 import ReviewsDisplay from './views/ReviewsDisplays'
 import Header from './components/Header'
+import LocationView from './views/LocationView';
 
 import './App.css'
 
@@ -18,7 +19,7 @@ function App() {
         <Routes>
 {/*<Route path="/HomePage/*" element={<Hub/>,<ReviewsDisplay/>}/>
 commented out since other option works better, change if needed*/}
-          <Route path='/*'   element={[<Home/>, <MenuView/>, <Hub/>,<ReviewsDisplay/> ]}/>
+          <Route path='/*'   element={[<Home/>, <MenuView/>, <Hub/>,<ReviewsDisplay/>, <LocationView/> ]}/>
         </Routes>
       </BrowserRouter>
     </>
