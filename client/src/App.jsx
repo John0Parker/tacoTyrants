@@ -1,5 +1,6 @@
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Hub from './views/Hub';
+import ReviewsDisplay from './views/ReviewsDisplays'
 import './App.css'
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-        <Route path="/TacoTyrant/*" element={<Hub/>}/>
+        <Route path="/TacoTyrant/*" element={<Hub/>,<ReviewsDisplay/>}/>
         </Routes>
       </BrowserRouter>
     </>
