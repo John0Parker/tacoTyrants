@@ -12,20 +12,20 @@ const divStyle = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundSize: 'cover',
-    height: '500px'
+    height: '700px'
 }
 const slideImages = [
     {
-        url: 'https://cdn3.iconfinder.com/data/icons/online-states/150/Photos-512.png',
-        caption: 'Image 1'
+        url: 'https://media.istockphoto.com/photos/traditional-mexican-food-picture-id1213818930?k=20&m=1213818930&s=612x612&w=0&h=L5eqA4-_CFA2lomgwWSgsDeXLm1zRU4tvJQxcYyPIDU=',
+        caption: 'A plethora of various tex-mex cuisine such as corn, nachos, and burritos'
     },
     {
-        url: 'https://cdn-icons-png.flaticon.com/512/6598/6598519.png',
-        caption: 'Image 2'
+        url: 'https://www.hellskitchenlounge.com/wp-content/uploads/2021/02/load-image-2021-02-11T214924.855.jpeg',
+        caption: 'Flautas covered in guacamole and cheese, surrounded by rice, refried beans, salsa, and guacamole'
     },
     {
-        url: 'https://cdn-icons-png.flaticon.com/512/7486/7486744.png',
-        caption: 'Image 3'
+        url: 'https://howtofeedaloon.com/wp-content/uploads/2014/01/enchiladas-feature-e1403185846601.jpg',
+        caption: 'Cheesey Chicken Enchiladas'
     },
     ];
 const Slideshow = (props) => {
@@ -35,7 +35,7 @@ const Slideshow = (props) => {
         <Slide>
         {slideImages.map((slideImage, index)=> (
             <div className="container" key={index}>
-            <div style={{ ...divStyle, 'backgroundImage': `url(${slideImage.url})` }}>
+            <div  class="rounded mx-auto" style={{ ...divStyle, 'backgroundImage': `url(${slideImage.url})` }}>
 
             </div>
             </div>

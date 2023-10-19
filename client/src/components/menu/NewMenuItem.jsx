@@ -32,7 +32,7 @@ const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
             .then(res =>{
                 setAllFoodItems([...allFoodItems, res.data]);
                 console.log(res.data._id);
-                navigate(`/menu`)
+                navigate(`/menu/${res.data._id}`)
             })
             .catch( err => {
                 console.log(err.response.data);
