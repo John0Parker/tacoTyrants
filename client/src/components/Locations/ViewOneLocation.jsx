@@ -13,11 +13,24 @@ const ViewOneLocation = (props) => {
             .then( res => {
                 setThisLocation(res.data);
                 console.log(res.data);
-                console.log(typeof(res.data.locationImage));
-                console.log(thisLocation.locationImage);
             })
             .catch( err => console.log(err))
-    }, [])
+        }, [])
+
+    let locationPhoneNumber = '' + thisLocation.phoneNumber;
+    let phoneArr = [];
+    const phoneFormat = phoneNum => {
+        for(let i = 0; i < phoneNum.length; i++) {
+            if(i == 2 || i == 5) {
+                phoneArr.push(phoneNum[i]);
+                phoneArr.push('-');
+            } else {
+                phoneArr.push(phoneNum[i]);
+            }
+        }
+        return phoneArr;
+    }
+    phoneFormat(locationPhoneNumber);
 
     return(
         <div className='container'>
@@ -26,12 +39,15 @@ const ViewOneLocation = (props) => {
                     <div className='col-md-4'>
                         <img src={thisLocation.locationImage} className='img-fluid rounded-start' style={{maxWidth: "400px"}} alt="a photo of this Taco Tyrant Shop" />
                     </div>
+                    {
+                        
+                    }
                     <div className='col-md-8'>
                         <div className='card-body mx-5'>
-                            <h3 class="card-title">Address: {thisLocation.address}</h3>
-                            <p class="card-text">Phone Number: {thisLocation.phoneNumber}</p>
-                            <p class="card-text">Hours: {thisLocation.hours}</p>
-                            <p class="card-text">Leave a Review: <Link className='btn btn-outline-warning text-warning-emphasis' to={'/review/create'}>Review Form</Link></p>
+                            <h3 className="card-title">Address: {thisLocation.address}</h3>
+                            <p className="card-text">Phone Number: {phoneArr}</p>
+                            <p className="card-text">Hours: {thisLocation.hours}</p>
+                            <p className="card-text">Leave a Review: <Link className='btn btn-outline-warning text-warning-emphasis' to={'/review/create'}>Review Form</Link></p>
                             <Link className='btn btn-outline-success text-success-emphasis mx-3' style={{textDecoration: 'none'}} to={'/locations/showalldisplay'}>List Display</Link>
                             <Link className='btn btn-outline-success text-success-emphasis' to={'/locations/update/' + thisLocation._id}>Edit</Link>
                         </div>
