@@ -46,7 +46,7 @@ const AboutUs =()=>{
                                 <p>
                                     Ole!
                                 </p>
-                                <Link to='/orders' className='btn btn-outline-success'>Order Now</Link>
+                                <Link to='/orders/create' className='btn btn-outline-success'>Order Now</Link>
                                 <Link to='/menu' className='btn btn-outline-warning ml-2'>See Menu</Link>
                             </div>
                             <img  className="col-4" src="https://c8.alamy.com/comp/2J70WK5/a-chef-spoons-sauce-over-beef-tacos-on-the-grill-2J70WK5.jpg" alt="founders photo" />
