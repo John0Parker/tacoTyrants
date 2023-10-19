@@ -20,18 +20,26 @@ const SingleMenuItem =({allFoodItems, selectAllFoodItems})=>{
     
     return(
         <>
-        <div className="container-fluid">
-            <h2>{`${foodItem.itemTitle}`}</h2>
-            <div>
-                <img src={`${foodItem.itemImage}`} alt={`an image of ${foodItem.itemTitle}`} class="w-25 img-fluid" />
-            </div>
-            <div>
-                <p>Description: {`${foodItem.itemDesc}`}</p>
-                <p>Price: ${foodItem.itemPrice}</p>
-            </div>
-            <div>
-                <button><Link to={`/menu/update/${foodItem._id}`}>Update</Link></button>
-                <button><Link to={`/menu/showalldisplay`}>See All Menu Items</Link></button>
+        <div className="container">
+            <div class="card my-3">
+                <div class="card-header d-flex justify-content-between">
+                    <h2>{`${foodItem.itemTitle}`}</h2>
+                    <h2>#{`${foodItem.itemNum}`}</h2>
+                </div>
+                <div class="card-body">
+                    <span class="d-inline-flex">
+                        <img  class="img-thumbnail w-25 rounded float-start" src={`${foodItem.itemImage}`} alt={`an image of ${foodItem.itemTitle}`}/>
+                        <p class="pl-3"><strong>Description:</strong> {`${foodItem.itemDesc}`}</p>
+                    </span>
+                        <p class="d-flex justify-content-start pl-3">
+                            <strong class="mr-3">Availability:</strong>{foodItem.isDineInOnly==true? " Dine-In Only" : "Available for Dine-In and Delivery " }
+                        </p>
+                    <p class="d-flex justify-content-end">Price: ${foodItem.itemPrice}</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <Link class="btn btn-outline-warning" to={`/menu/update/${foodItem._id}`}>Update</Link>
+                    <Link class="btn btn-outline-primary ml-2" to={`/menu/showalldisplay`}>See All Menu Items</Link>
+                </div>
             </div>
         </div>
         </>

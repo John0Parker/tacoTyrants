@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import {Link, useNavigate, useParams} from 'react-router-dom';
-import Header from '../Header';
 import axios from 'axios';
 
 const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
@@ -32,7 +31,7 @@ const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
             .then(res =>{
                 setAllFoodItems([...allFoodItems, res.data]);
                 console.log(res.data._id);
-                navigate(`/menu`)
+                navigate(`/menu/${res.data._id}`)
             })
             .catch( err => {
                 console.log(err.response.data);
@@ -46,44 +45,48 @@ const NewMenuItem =({allFoodItems, setAllFoodItems})=>{
 
     return(
         <>
-        <div className="container-fluid">
-            <h2>Add A New Menu Item</h2>
+        <div className="container">
 
-            <form onSubmit={newMenuItemHandler}>
-                <div style= {{color: "red"}}>
-                    {
-                        errors.map( (err, idx) =>{
-                            return(
-                                <p key={idx}>{err}</p>
-                                )
-                            })
-                        }
+            <form onSubmit={newMenuItemHandler} class="container card px-0 w-50 ">
+                <h2 class="card-header">Add A New Menu Item</h2>
+                <div class="card-body">
+                    <div className="errors" style= {{color: "red"}}>
+                        {
+                            errors.map( (err, idx) =>{
+                                return(
+                                    <p key={idx}>{err}</p>
+                                    )
+                                })
+                            }
+                    </div>
+                    <div class="form-group">
+                        <label class="mr-1"><strong>Item Title:</strong></label>
+                        <input class="form-control" type="text" value={itemTitle} onChange={e => setItemTitle(e.target.value)}/>
+                    </div>
+                    <div class="form-group">
+                        <label class="mr-1"><strong>Item Description:</strong></label>
+                        <textarea class="form-control" rows="3" type="text" value={itemDesc} onChange={ e => setItemDesc(e.target.value)} />
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <div class="form-group">
+                            <label class="mr-1"><strong>Item Number:</strong></label>
+                            <input class="form-control" type="number" value={itemNum} onChange={e => setItemNum(e.target.value)}/>
+                        </div>
+                        <div class="form-group mx-3">
+                            <label class="mr-1"><strong>Item Price ($):</strong></label>
+                            <input class="form-control"cols="2" type="number" value={itemPrice} onChange={e => setItemPrice(e.target.value)}/>
+                        </div>
+                        <div class="form-group d-flex">
+                            <label class="mr-1"><strong>Dine-In Only:</strong></label>
+                            <input type="checkbox" checked={isDineInOnly} value={isDineInOnly} onChange={e => setIsDineInOnly(e.target.checked)}/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="mr-1"><strong>Item Image</strong> (link):</label>
+                        <input class="form-control" type="text" value={itemImage} onChange={e => setItemImage(e.target.value)}/>
+                    </div>
+                    <button class="btn btn-outline-success">Submit</button>
                 </div>
-                <div>
-                    <label>Item Title:</label>
-                    <input type="text" value={itemTitle} onChange={e => setItemTitle(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Item Description:</label>
-                    <input type="text" value={itemDesc} onChange={e => setItemDesc(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Item Number:</label>
-                    <input type="number" value={itemNum} onChange={e => setItemNum(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Dine-In Only:</label>
-                    <input type="checkbox"  checked={isDineInOnly} value={isDineInOnly} onChange={e => setIsDineInOnly(e.target.checked)}/>
-                </div>
-                <div>
-                    <label>Item Price:</label>
-                    <input type="number" value={itemPrice} onChange={e => setItemPrice(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Item Image (link):</label>
-                    <input type="text" value={itemImage} onChange={e => setItemImage(e.target.value)}/>
-                </div>
-                <button>Submit</button>
             </form>
         </div>
         </>
