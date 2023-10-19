@@ -2,6 +2,7 @@ import React,{useEffect,useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
 
 
 const AllReviews=(props)=>{
@@ -49,6 +50,8 @@ const AllReviews=(props)=>{
                 <tbody>
                     {
                         allReviews.map((review,index)=>{
+                            let  dateWithTimeSubmit = dayjs(review.createdAt).format("MM/DD/YYYY hh:mm A")
+                            let  dateWithTimeMadeOn = dayjs(review.createdAt).format("MM/DD/YYYY hh:mm A")
                             return(
                                 <tr key={index}>
                                     <td className="text-center"><Link to={`/review/${review._id}`}>{review.title}</Link></td>
@@ -56,7 +59,7 @@ const AllReviews=(props)=>{
                                     <td className="text-center">{review.review}</td> 
                                     <td className="text-center">{review.rating}</td>
                                     {
-                                        review.dateOfOccurrence?<td className="text-center">{review.dateOfOccurrence}</td>:<td className="text-center">{review.createdAt}</td>
+                                        review.dateOfOccurrence?<td className="text-center">{dateWithTimeMadeOn}</td>:<td className="text-center">{dateWithTimeSubmit}</td>
                                     }
                                 <td className="d-flex justify-content-around">
                                     <button className="btn btn-outline-danger " onClick={e=>deleteHandler(review._id)}>Delete</button>
