@@ -3,7 +3,14 @@ import axios from 'axios';
 import { Link, useParams} from 'react-router-dom';
 
 const OrderDisplay = () => {
-    const [order, setOrder] = useState('');
+    const [order, setOrder] = useState({
+        customerName: '',
+        shell: '',
+        meat: '',
+        quantity: 0,
+        toppings: {top1: '',top2: '',top3: '',top4: '',top5: '',top6: ''},
+        notes: ''
+});
     const {id} = useParams();
     useEffect(() => {
         axios
@@ -27,12 +34,12 @@ const OrderDisplay = () => {
                     <p>Meat: {order.meat}</p>
                     <p>Shell: {order.shell}</p>
                     <p>Toppings: <>
-                                {order.toppings == true ? 'Corn/' : null}
-                                {order.toppings == true ? 'Pico de Gallo/' : null}
-                                {order.toppings == true ? 'Jalapenos/' : null}
-                                {order.toppings == true ? 'Red Chili/' : null}
-                                {order.toppings == true ? 'Chili Verde/' : null}
-                                {order.toppings == true ? 'Habanero' : null}</></p>
+                                {order.toppings.top1 == true ? '-Corn' : null}
+                                {order.toppings.top2 == true ? '-Pico de Gallo' : null}
+                                {order.toppings.top3 == true ? '-Jalapenos' : null}
+                                {order.toppings.top4 == true ? '-Red Chili' : null}
+                                {order.toppings.top5 == true ? '-Chili Verde' : null}
+                                {order.toppings.top6 == true ? '-Habanero' : null}</></p>
                                 {/*<div defer>{order.toppings == true ? 'Corn/' : null}
                                 {order.toppings == true ? 'Pico de Gallo/' : null}
                                 {order.toppings == true ? 'Jalapenos/' : null}
