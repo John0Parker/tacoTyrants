@@ -2,6 +2,7 @@ import React from 'react';
 import { Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import dayjs from "dayjs";
 
 const Orders = (props) => {
     const [orders, setOrders] = useState([]);
@@ -49,6 +50,7 @@ const Orders = (props) => {
                 </thead>
                 <tbody className=''>
                     {orders.map((order, index) => {
+                        const dateWithTime =dayjs(order.createdAt).format("MM/DD/YYYY hh:mm A");
                         return (
                             <tr  key={order._id}>
                                 <td><Link to={`${order._id}`}>{order.customerName}</Link></td>
@@ -62,7 +64,7 @@ const Orders = (props) => {
                                 {order.toppings.top5 == true ? 'Chili Verde-' : null}
                                 {order.toppings.top6 == true ? 'Habanero-' : null}  </td>        
                                 <td>{order.notes != undefined ? order.notes : 'N/A'}</td>
-                                <td>{order.createdAt}</td>
+                                <td>{dateWithTime}</td>
                                 <td>{<button className="btn btn-outline-danger" onClick={()=> deleteFilter(order._id)}>Delete</button>}</td>
                             </tr>
                         )
