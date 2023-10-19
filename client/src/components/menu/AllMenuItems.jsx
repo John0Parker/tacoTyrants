@@ -1,23 +1,24 @@
 import  { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
+import dayjs from "dayjs";
 
 
 const AllMenuItems =({allFoodItems, setAllFoodItems})=>{
     const navigate = useNavigate();
     // sort menu by their item numbers descending
     const sortedFoodItems = allFoodItems.sort((a,b) => a.itemNum - b.itemNum)
-
-const deleteFoodItemHandler = e => {
-    const idToDelete = e.target.id;
-    axios.delete(`http://localhost:8000/api/fooditems/${idToDelete}`)
-        .then(res => {
-            const filteredFoodItems = allFoodItems.filter(
-                foodItem => foodItem._id !==idToDelete);
-            setAllFoodItems(filteredFoodItems);
-            navigate(`/menu`);
-        })
-}
+    
+    const deleteFoodItemHandler = e => {
+        const idToDelete = e.target.id;
+        axios.delete(`http://localhost:8000/api/fooditems/${idToDelete}`)
+            .then(res => {
+                const filteredFoodItems = allFoodItems.filter(
+                    foodItem => foodItem._id !==idToDelete);
+                setAllFoodItems(filteredFoodItems);
+                navigate(`/menu/showalldisplay`);
+            })
+    }
 
     return(
         <>
@@ -29,11 +30,12 @@ const deleteFoodItemHandler = e => {
                     <th>Item Number</th>
                     <th>Description</th>
                     <th>Price</th>
-                    <th>Submitted On</th>
+                    <th>Added On</th>
                     <th>Actions</th>
                 </tr>
                 {   
                     sortedFoodItems.map(foodItem =>{
+                        const dateWithTime =dayjs(foodItem.createdAt).format("MM/DD/YYYY hh:mm A");
                         return(
                             <>
                             <tr key={foodItem._id}>
@@ -41,8 +43,8 @@ const deleteFoodItemHandler = e => {
                                 <td>{foodItem.itemNum}</td>
                                 <td>{foodItem.itemDesc}</td>
                                 <td>${foodItem.itemPrice}</td>
-                                <td>{foodItem.createdAt}</td>
-                                <td class="d-flex">
+                                <td>{dateWithTime}</td>
+                                <td class="d-flex justify-content-center">
                                     <Link class="btn btn-outline-warning" to={`/menu/update/${foodItem._id}`}>Update</Link>
                                     <button class="btn btn-outline-danger ml-2" onClick={deleteFoodItemHandler} id={foodItem._id}>Delete</button>
                                 </td>
