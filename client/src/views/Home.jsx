@@ -1,20 +1,17 @@
 import React from 'react';
 import {Route, Routes, Navigate} from 'react-router-dom';
 import AboutUs from '../components/general/AboutUs';
+import Slideshow from '../components/general/Slideshow';
 
 
 const Home = (props) => {
-// View for splash page (/tacotyrants) and About Us page (/tacotyrants/about)
 
     return(
         <Routes>
-            {/* Set a redirect to automatically send user to /tacotyrants
-            if they enter an invalid url*/}
-            <Route path='/' element />
+            <Route path='/Homepage' element={[<Slideshow/>]} />
+            {/* ^^^^^^^  add contact us component to route elements above  ^^^^^^^ */}
             <Route path='/AboutUs' element={<AboutUs/>} />
         </Routes>
     )
-
 }
-
 export default Home;
