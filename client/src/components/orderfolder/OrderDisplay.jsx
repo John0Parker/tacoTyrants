@@ -26,7 +26,8 @@ const OrderDisplay = () => {
                 <div className='card-body '>
                     <p>Meat: {order.meat}</p>
                     <p>Shell: {order.shell}</p>
-                    <p>Toppings: <>{order.toppings == true ? 'Corn/' : null}
+                    <p>Toppings: <>
+                                {order.toppings == true ? 'Corn/' : null}
                                 {order.toppings == true ? 'Pico de Gallo/' : null}
                                 {order.toppings == true ? 'Jalapenos/' : null}
                                 {order.toppings == true ? 'Red/' : null}

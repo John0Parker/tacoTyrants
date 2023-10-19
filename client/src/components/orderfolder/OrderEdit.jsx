@@ -32,7 +32,7 @@ const OrderEdit = (props) => {
     }
     const handleChange2 = (event) => {
         setMeat(event.target.value)
-    }
+    }//select event handler
     useEffect((e) => {
         axios
         .get(`http://localhost:8000/api/orders/` + id)
@@ -44,17 +44,13 @@ const OrderEdit = (props) => {
             setQuantity(response.data.quantity);
             setTop1(response.data.toppings.top1);setTop2(response.data.toppings.top2);setTop3(response.data.toppings.top3);
             setTop4(response.data.toppings.top4);setTop5(response.data.toppings.top5);setTop6(response.data.toppings.top6);
-            setNotes(response.data.notes)
+            setNotes(response.data.notes);
         })//Setting all states to the value in the API Call
         .catch((err) => {
             console.log(err.response);
             orderNotFoundError(`Order not found using that ID`);
         });
     }, []);
-    
-    const handleCancel = (event) =>{
-
-    }
     const handleSubmit = (e) => {
         e.preventDefault();
         const editedOrder = {
@@ -109,14 +105,14 @@ const OrderEdit = (props) => {
                         onChange={(e) => setCustomerName(e.target.value)}
                     />
                     <label className='form-label m-2'>Shell:</label>
-                    <select className="form-control" defaultValue={shell} onChange={handleChange1}>
-                        <option>Hard Flour</option>
-                        <option>Soft Flour</option>
-                        <option>Hard Corn</option>
-                        <option>Soft Corn</option>
+                    <select value={shell} className="form-control" onChange={handleChange1}>
+                        <option value="Hard Flour">Hard Flour</option>
+                        <option value="Soft Flour">Soft Flour</option>
+                        <option value="Hard Corn">Hard Corn</option>
+                        <option value="Soft Corn">Soft Corn</option>
                     </select>
                     <label className='form-label m-2'>Meat:</label>
-                    <select className="form-control" defaultValue={meat} onChange={handleChange2}>
+                    <select value={meat} className="form-control" onChange={handleChange2}>
                         <option value="Carne Asada">Carne Asada</option>
                         <option value="Fish">Fish</option>
                         <option value="Pork">Pork</option>
