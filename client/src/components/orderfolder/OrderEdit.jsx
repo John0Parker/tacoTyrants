@@ -82,11 +82,11 @@ const OrderEdit = (props) => {
     };
     return (
         <div className='container'>
-            <hr />
-            <div>
-                <h4 className="mb-3">Authentic Mexican Taco</h4>
-            </div>
-            <hr />
+        <hr />
+        <div>
+            <h4 className="mb-3">Authentic Mexican Taco</h4>
+        </div>
+        <hr />
             <form onSubmit={handleSubmit}>
                     {orderNotFoundError ? (
                         <h2>
