@@ -51,7 +51,7 @@ const AllReviews=(props)=>{
                     {
                         allReviews.map((review,index)=>{
                             let  dateWithTimeSubmit = dayjs(review.createdAt).format("MM/DD/YYYY hh:mm A")
-                            let  dateWithTimeMadeOn = dayjs(review.createdAt).format("MM/DD/YYYY hh:mm A")
+                            let  dateWithTimeMadeOn = dayjs(review.dateOfOccurrence).format("MM/DD/YYYY hh:mm A")
                             return(
                                 <tr key={index}>
                                     <td className="text-center"><Link to={`/review/${review._id}`}>{review.title}</Link></td>
