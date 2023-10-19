@@ -30,8 +30,8 @@ const OrderDisplay = () => {
                                 {order.toppings == true ? 'Corn/' : null}
                                 {order.toppings == true ? 'Pico de Gallo/' : null}
                                 {order.toppings == true ? 'Jalapenos/' : null}
-                                {order.toppings == true ? 'Red/' : null}
-                                {order.toppings == true ? 'Green/' : null}
+                                {order.toppings == true ? 'Red Chili/' : null}
+                                {order.toppings == true ? 'Chili Verde/' : null}
                                 {order.toppings == true ? 'Habanero' : null}</></p>
                                 {/*<div defer>{order.toppings == true ? 'Corn/' : null}
                                 {order.toppings == true ? 'Pico de Gallo/' : null}
