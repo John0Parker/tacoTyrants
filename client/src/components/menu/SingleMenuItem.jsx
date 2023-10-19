@@ -29,16 +29,16 @@ const SingleMenuItem =({allFoodItems, selectAllFoodItems})=>{
                 <div class="card-body">
                     <span class="d-inline-flex">
                         <img  class="img-thumbnail w-25 rounded float-start" src={`${foodItem.itemImage}`} alt={`an image of ${foodItem.itemTitle}`}/>
-                        <p class="pl-3">Description: {`${foodItem.itemDesc}`}</p>
+                        <p class="pl-3"><strong>Description:</strong> {`${foodItem.itemDesc}`}</p>
                     </span>
-                        <p class="d-flex justify-content-center">
-                            {foodItem.isDineInOnly==true? " Dine-In Only" : "Available for Dine-In and Delivery " }
+                        <p class="d-flex justify-content-start pl-3">
+                            <strong class="mr-3">Availability:</strong>{foodItem.isDineInOnly==true? " Dine-In Only" : "Available for Dine-In and Delivery " }
                         </p>
                     <p class="d-flex justify-content-end">Price: ${foodItem.itemPrice}</p>
                 </div>
                 <div class="d-flex justify-content-end">
                     <Link class="btn btn-outline-warning" to={`/menu/update/${foodItem._id}`}>Update</Link>
-                    <Link class="btn btn-outline-danger ml-2" to={`/menu/showalldisplay`}>See All Menu Items</Link>
+                    <Link class="btn btn-outline-primary ml-2" to={`/menu/showalldisplay`}>See All Menu Items</Link>
                 </div>
             </div>
         </div>
