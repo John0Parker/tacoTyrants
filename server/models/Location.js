@@ -14,7 +14,9 @@ const LocationSchema = new mongoose.Schema({
     phoneNumber: {
         type: Number,
         required: [true, "Phone Number is required"],
-        min: [10, "Phone Number must be at least 10 digits"]
+        min: [1000000000, "Phone Number must be 10 digits"],
+        max: [9999999999, "Phone Number must be 10 digits"]
+
     },
     storeNumber: {
         type: Number,

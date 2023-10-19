@@ -9,6 +9,7 @@ const LocationForm = ({allTacoLocations, setAllTacoLocations}) => {
     const [ phoneNumber, setPhoneNumber ] = useState('');
     const [ storeNumber, setStoreNumber ] = useState('');
     const [ locationImage, setLocationImage ] = useState('');
+    const [ locationErrors, setLocationErrors ] = useState([]);
     const navigate = useNavigate();
 
     const createLocationHandler = e => {
@@ -26,13 +27,29 @@ const LocationForm = ({allTacoLocations, setAllTacoLocations}) => {
                 setAllTacoLocations([...allTacoLocations, newLocation]);
                 navigate('/locations');
             })
-            .catch( err => console.log(err) )
+            .catch( err => {
+                console.log(err);
+                const errArray = [];
+                for(const key of Object.keys(err.response.data.errors)) {
+                    errArray.push(err.response.data.errors[key].message)
+                }
+                setLocationErrors(errArray);
+            })
     }
 
     return(
-        <div className='container'>
-            <h2>Create a new location</h2>
-            <form onSubmit={createLocationHandler}>
+        <div className='container card'>
+            <form className='card-body' onSubmit={createLocationHandler}>
+                <h2 className='card-title'>Create a new location</h2>
+                <div style={{ color: "red" }}>
+                    {
+                        locationErrors.map( (err, idx) => {
+                            return(
+                                <p key={idx}>{err}</p>
+                            )
+                        })
+                    }
+                </div>
                 <div>
                     <label className='form-label'>Address</label>
                     <input className='form-control' value={address} onChange={ e => setAddress(e.target.value) }/>
