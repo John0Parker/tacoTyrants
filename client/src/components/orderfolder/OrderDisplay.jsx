@@ -17,33 +17,37 @@ const OrderDisplay = () => {
         });
     }, []);
     return (
-        <div>
-            <Link to="/orders">Back to Orders</Link>
-            <h2>
-                Placed by: {order.customerName}
-                <br />
-                Meat: {order.meat}
-                <br />
-                Shell: {order.shell}
-                <br />
-                Toppings: <>{order.toppings == true ? 'Corn/' : null}
-                            {order.toppings == true ? 'Pico de Gallo/' : null}
-                            {order.toppings == true ? 'Jalapenos/' : null}
-                            {order.toppings == true ? 'Red/' : null}
-                            {order.toppings == true ? 'Green/' : null}
-                            {order.toppings == true ? 'Habanero' : null}</>
-                            {/*<div defer>{order.toppings == true ? 'Corn/' : null}
-                            {order.toppings == true ? 'Pico de Gallo/' : null}
-                            {order.toppings == true ? 'Jalapenos/' : null}
-                            {order.toppings == true ? 'Red/' : null}
-                            {order.toppings == true ? 'Green/' : null}
-    {order.toppings == true ? 'Habanero' : null}</div> */}
-                <br />
-                Quantity: {order.quantity}
-                <br />
-                Special Notes: {order.notes != undefined ? order.notes : 'N/A'}
-            </h2>
-            <Link to={"/orders/edit/" + id}><button>Edit Store Details</button></Link>
+        <div className='container'>
+            <div className='card'>
+                <div className='card-header d-flex align-content-center justify-content-between'>
+                        <h5>Placed by: {order.customerName}</h5>
+                        <h5><Link to="/orders">Back to Orders</Link></h5>
+                </div> 
+                <div className='card-body '>
+                    <p>Meat: {order.meat}</p>
+                    <p>Shell: {order.shell}</p>
+                    <p>Toppings: <>
+                                {order.toppings == true ? 'Corn/' : null}
+                                {order.toppings == true ? 'Pico de Gallo/' : null}
+                                {order.toppings == true ? 'Jalapenos/' : null}
+                                {order.toppings == true ? 'Red/' : null}
+                                {order.toppings == true ? 'Green/' : null}
+                                {order.toppings == true ? 'Habanero' : null}</></p>
+                                {/*<div defer>{order.toppings == true ? 'Corn/' : null}
+                                {order.toppings == true ? 'Pico de Gallo/' : null}
+                                {order.toppings == true ? 'Jalapenos/' : null}
+                                {order.toppings == true ? 'Red/' : null}
+                                {order.toppings == true ? 'Green/' : null}
+                                {order.toppings == true ? 'Habanero' : null}</div> */}
+                    <p>Quantity: {order.quantity}</p>
+                    <p>Special Notes: {order.notes != undefined ? order.notes : 'N/A'}</p>
+                    <Link to={"/orders/edit/" + id}>
+                        <button 
+                        className='btn btn-outline-warning'>Edit Order Details
+                        </button>
+                    </Link>
+                </div> 
+            </div>
         </div>
     );
 };

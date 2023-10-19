@@ -28,41 +28,48 @@ const Orders = (props) => {
             });
     };
     return(
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pickup Name</th>
-                        <th>Taco Shell</th>
-                        <th>Meat</th>
-                        <th>Quantity</th>
-                        <th>Toppings?</th>
-                        <th>Notes</th>
-                        <th>Delete</th>
+        <div className='container'>
+            <hr />
+            <div>
+                <h4 className="mb-3">Received Orders</h4>
+            </div>
+            <hr />
+            <table className='table table-bordered table-striped'>
+                <thead className="table-success">
+                    <tr className='align-items-center '>
+                        <th className="text-center">Pickup Name</th>
+                        <th className="text-center">Taco Shell</th>
+                        <th className="text-center">Meat</th>
+                        <th className="text-center">Quantity</th>
+                        <th className="text-center">Toppings?</th>
+                        <th className="text-center">Notes</th>
+                        <th className="text-center">Time Placed</th>
+                        <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className=''>
                     {orders.map((order, index) => {
                         return (
-                            <tr key={order._id}>
+                            <tr  key={order._id}>
                                 <td><Link to={`${order._id}`}>{order.customerName}</Link></td>
                                 <td>{order.shell}</td>
                                 <td>{order.meat}</td>
                                 <td>{order.quantity}</td> 
-                                <td>{order.toppings.top1 == true ? 'Corn/' : null}
-                                {order.toppings.top2 == true ? 'Pico de Gallo/' : null}
-                                {order.toppings.top3 == true ? 'Jalapenos/' : null}
-                                {order.toppings.top4 == true ? 'Red/' : null}
-                                {order.toppings.top5 == true ? 'Green/' : null}
-                                {order.toppings.top6 == true ? 'Habanero/' : null}  </td>        
+                                <td className=''>{order.toppings.top1 == true ? 'Corn-' : null}
+                                {order.toppings.top2 == true ? 'Pico de Gallo-' : null}
+                                {order.toppings.top3 == true ? 'Jalapenos-' : null}
+                                {order.toppings.top4 == true ? 'Red Chili-' : null}
+                                {order.toppings.top5 == true ? 'Chili Verde-' : null}
+                                {order.toppings.top6 == true ? 'Habanero-' : null}  </td>        
                                 <td>{order.notes != undefined ? order.notes : 'N/A'}</td>
-                                <td>{<button onClick={()=> deleteFilter(order._id)}>Delete</button>}</td>
+                                <td>{order.createdAt}</td>
+                                <td>{<button className="btn btn-outline-danger" onClick={()=> deleteFilter(order._id)}>Delete</button>}</td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
-            <Link to="create"><button>Order Now!</button></Link>
+            <Link to="create"><button className="btn btn-outline-success">Order Now!</button></Link>
         </div>
     );
 }

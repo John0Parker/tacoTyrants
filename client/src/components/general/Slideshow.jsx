@@ -44,4 +44,4 @@ const Slideshow = (props) => {
     </div>
     )
 }
-export default Slideshow
+export default Slideshow;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const OrderCreate = (props) => {
@@ -60,78 +60,95 @@ const OrderCreate = (props) => {
     };
 
     return(
-        <div>
+        <div className='container'> 
+            <hr />
+            <div>
+                <h4 className="mb-3">Authentic Mexican Taco</h4>
+            </div>
+            <hr />
             <form onSubmit={handleSubmit}>
                     {orderNotFoundError ? (
                         <h2>
-                        {orderNotFoundError} <Link to="/stores/add">Click here to add a store</Link>
+                        {orderNotFoundError} <Link to="/orders/create">Click here to place an order</Link>
                         </h2>
                     ) : null}
                 <div>{
                     errors.map(( err, index) => {
                         return (
-                            <p key={index}>{err}</p>
+                            <p style="color: red"key={index}>{err}</p>
                         )}
                     )}
                 </div>
-                <div >
-                    Name for Pickup: 
+                <div className='card pl-4 pr-4'>
+                    <label className='form-label m-2'>Name for Pickup:</label> 
                     <input 
+                    className='form-control'
                     type="string"
                     onChange={(e) => setCustomerName(e.target.value)}
                     />
-
-                    <br />
-                    Shell: 
-                    <select onChange={handleChange1}>
+                    <label className='form-label m-2'>Shell:</label> 
+                    <select className='form-control' onChange={handleChange1}>
                         <option>Hard Flour</option>
                         <option>Soft Flour</option>
                         <option>Hard Corn</option>
                         <option>Soft Corn</option>
                     </select>
-                    <br />
-                    Meat:
-                    <select onChange={handleChange2}>
+                    <label className='form-label m-2'>Meat:</label> 
+                    <select className='form-control' onChange={handleChange2}>
                         <option value="Carne Asada">Carne Asada</option>
                         <option value="Fish">Fish</option>
                         <option value="Pork">Pork</option>
                         <option value="Ground Beef">Ground Beef</option>
                         <option value="Shredded Chicken">Shredded Chicken</option>
                     </select>
-                    <br />
-                    Quantity:
+                    <label className='form-label m-2'>Quantity:</label> 
                     <input 
+                        className='form-control'
                         type='number' 
                         defaultValue={quantity}
                         onChange={(e) => setQuantity(e.target.value)}
                     />
-                    <br />
-                        Add-ons
-                        <br/>
-                        Corn
-                        <input type="checkbox" onClick={checkBox1}/>
-                        Pico de Gallo
-                        <input type="checkbox" onClick={checkBox2}/>
-                        Jalapenos
-                        <input type="checkbox" onClick={checkBox3}/>
-                        <br/>
-                        Sauce
-                        <br/>
-                        Green
-                        <input type="checkbox" onClick={checkBox4}/>
-                        Red
-                        <input type="checkbox" onClick={checkBox5}/>
-                        Habanero
-                        <input type="checkbox" onClick={checkBox6}/>
-                    <br/>
+                    <div >
+                    <label className='form-label m-2'>Toppings:</label>
+                        <div className='d-flex justify-content-around'>
+                            <h6 className='form-check'>
+                            <input className="form-check-input"  type="checkbox" onChange={checkBox1}/>
+                            <label className='form-label'>Corn</label>
+                            </h6>
+                            <h6 className='form-check'>
+                                <input className="form-check-input"  type="checkbox" onChange={checkBox2}/>
+                                <label className='form-label'>Pico de Gallo</label>
+                            </h6>
+                            <h6 className='form-check'>
+                                <input className="form-check-input"  type="checkbox" onChange={checkBox3}/>
+                                <label className='form-label'>Jalapenos</label>
+                            </h6>
+                        </div>
+                        <div className='d-flex justify-content-around'>
+                            <h6 className='form-check'>
+                                <input 
+                                className="form-check-input" 
+                                type="checkbox" onChange={checkBox4}/>
+                                <label className='form-check-label'>Chili Verde</label>
+                            </h6>
+                            <h6 className='form-check'>
+                                <input className="form-check-input"  type="checkbox" onChange={checkBox5}/>
+                                <label className='form-label'>Red Sauce</label>
+                            </h6>
+                            <h6 className='form-check'>
+                                <input className="form-check-input"  type="checkbox" onChange={checkBox6}/>
+                                <label className='form-label'>Habanero</label>
+                            </h6>
+                        </div>
+                    </div>
                     Special Notes: 
-                    <input
+                    <input className='form-textarea'
                         type="string"
                         onChange={(e) => setNotes(e.target.value)}
                     />
-                    <br />
+                    <button className="btn btn-outline-success mt-4 m-2" type="submit">Submit this Order!</button>
+                    <Link to="/orders"><button className="btn btn-danger m-2" >Cancel Order</button></Link>
                 </div>
-                <button type="submit">Submit this Order!</button>
             </form>
         </div>
     );
